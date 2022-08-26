@@ -1,38 +1,51 @@
 const gameFlow = (() => {
    
    var gameBoard = (() => {
-        let board = ["test", "o", "x", "o", "x", "o", "x", "o", "x"
-    //essentially want to tie the 9 board tiles to each index of the array 1-9
-    ];
-    
-    let boardDiv1 = document.getElementById("tile-1");
-    let boardDiv2 = document.getElementById("tile-2");
-    let boardDiv3 = document.getElementById("tile-3");
-    let boardDiv4 = document.getElementById("tile-4");
-    let boardDiv5 = document.getElementById("tile-5");
-    let boardDiv6 = document.getElementById("tile-6");
-    let boardDiv7 = document.getElementById("tile-7");
-    let boardDiv8 = document.getElementById("tile-8");
-    let boardDiv9 = document.getElementById("tile-9");    
+        let boardDiv1 = document.getElementById("tile-1");
+        let boardDiv2 = document.getElementById("tile-2");
+        let boardDiv3 = document.getElementById("tile-3");
+        let boardDiv4 = document.getElementById("tile-4");
+        let boardDiv5 = document.getElementById("tile-5");
+        let boardDiv6 = document.getElementById("tile-6");
+        let boardDiv7 = document.getElementById("tile-7");
+        let boardDiv8 = document.getElementById("tile-8");
+        let boardDiv9 = document.getElementById("tile-9");
 
-    let displayBoard = [boardDiv1, boardDiv2, boardDiv3, boardDiv4, boardDiv5, boardDiv6, boardDiv7, boardDiv8, boardDiv9];
+        let boardDivs = [boardDiv1, boardDiv2, boardDiv3, boardDiv4, boardDiv5, boardDiv6, boardDiv7, boardDiv8, boardDiv9];
 
-    for (let i = 0; i < board.length; i++) {
-    displayBoard[i].innerText = `${board[i]}`
-    }
+        let board = [boardDiv1.innerText, boardDiv2.innerText, boardDiv3.innerText, boardDiv4.innerText, boardDiv5.innerText, boardDiv6.innerText, boardDiv7.innerText, boardDiv8.innerText, boardDiv9.innerText];
 
-    return {board, displayBoard};
+        return {board, boardDivs};
     })();
 
     const displayController = (() => {
-        //could use onclick for grid divs to trigger an event pushing info to the array
+        for (let i = 1; i < 9; i++) {
+            let tile = document.getElementById(`tile-${i}`);
+            tile.addEventListener("click", function() {
+                changeTile(tile, player1.marker, i)
+        })};
+
+        function changeTile(tile, marker, tileNum) {
+            tile.innerText = `${marker}`;
+            
+            let arrayLocation = tileNum - 1;
+
+            return updateArray(arrayLocation, marker)
+        };
+
+        function updateArray(location, marker) {
+            gameBoard.board.splice(location, 1, marker)
+        };
+
         return
     })();
 
-    const playerFactory = (letter) => {
-        //maybe onclick for two letter buttons trigger tieing playerid to a letter?
-        return {letter};
+    const playerFactory = (name, marker) => {
+        return {name, marker};
     };
+
+    let player1 = playerFactory('bob', 'X');
+    let player2 = playerFactory('john', 'O');
 
 return {gameBoard, displayController}
 })();
