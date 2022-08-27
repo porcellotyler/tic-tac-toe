@@ -25,6 +25,60 @@ const gameFlow = (() => {
         return {board, boardDivs};
     })();
 
+    function winChecker() {
+        let board = gameBoard.board;
+
+        if (board.at(0) === 'X' && board.at(1) === 'X' && board.at(2) === 'X') {
+            gameWon('X');
+        } else if (board.at(0) === 'O' && board.at(1) === 'O' && board.at(2) === 'O') {
+            gameWon('O');
+        } else if (board.at(3) === 'X' && board.at(4) === 'X' && board.at(5) === 'X') {
+            gameWon('X');
+        } else if (board.at(3) === 'O' && board.at(4) === 'O' && board.at(5) === 'O') {
+            gameWon('O');
+        } else if (board.at(6) === 'X' && board.at(7) === 'X' && board.at(8) === 'X') {
+            gameWon('X');
+        } else if (board.at(6) === 'O' && board.at(7) === 'O' && board.at(8) === 'O') {
+            gameWon('O');
+        } else if (board.at(0) === 'X' && board.at(3) === 'X' && board.at(6) === 'X') {
+            gameWon('X');
+        } else if (board.at(0) === 'O' && board.at(3) === 'O' && board.at(6) === 'O') {
+            gameWon('O');
+        } else if (board.at(1) === 'X' && board.at(4) === 'X' && board.at(7) === 'X') {
+            gameWon('X');
+        } else if (board.at(1) === 'O' && board.at(4) === 'O' && board.at(7) === 'O') {
+            gameWon('O');
+        } else if (board.at(2) === 'X' && board.at(5) === 'X' && board.at(8) === 'X') {
+            gameWon('X');
+        } else if (board.at(2) === 'O' && board.at(5) === 'O' && board.at(8) === 'O') {
+            gameWon('O');
+        } else if (board.at(0) === 'X' && board.at(4) === 'X' && board.at(8) === 'X') {
+            gameWon('X');
+        } else if (board.at(0) === 'O' && board.at(4) === 'O' && board.at(8) === 'O') {
+            gameWon('O');
+        } else if (board.at(2) === 'X' && board.at(4) === 'X' && board.at(6) === 'X') {
+            gameWon('X');
+        } else if (board.at(2) === 'O' && board.at(4) === 'O' && board.at(6) === 'O') {
+            gameWon('O');
+        } else if ((board.at(0) === 'X' || board.at(0) === 'O') && (board.at(1) === 'X' || board.at(1) === 'O') && (board.at(2) === 'X' || board.at(2) === 'O') && (board.at(3) === 'X' || board.at(3) === 'O') && (board.at(4) === 'X' || board.at(4) === 'O') && (board.at(5) === 'X' || board.at(5) === 'O') && (board.at(6) === 'X' || board.at(6) === 'O') && (board.at(7) === 'X' || board.at(7) === 'O') && (board.at(8) === 'X' || board.at(8) === 'O')) {
+            gameTie();
+        };
+    };
+
+    function gameWon(mark) {
+        const container = document.getElementById("winDisplay");
+        const winDisplay = document.createElement("div");
+            winDisplay.innerText = `The winner is ${mark}!`;
+            container.append(winDisplay);
+    };
+
+    function gameTie() {
+        const container = document.getElementById("winDisplay");
+        const winDisplay = document.createElement("div");
+            winDisplay.innerText = `The game is a tie!`;
+            container.append(winDisplay);
+    };
+
     const displayController = (() => {
         for (let i = 1; i < 10; i++) {
             let tile = document.getElementById(`tile-${i}`);
@@ -35,6 +89,8 @@ const gameFlow = (() => {
                     checkWho(tile, turnCounter, i)
                 };
         })};
+
+        //need to add a reset button
 
         function checkWho(tile, turnCounter, tileNum) {
             if (turnCounter % 2 === 0) {
@@ -57,7 +113,8 @@ const gameFlow = (() => {
         };
 
         function updateArray(location, marker) {
-            gameBoard.board.splice(location, 1, marker)
+            gameBoard.board.splice(location, 1, marker);
+            winChecker();
         };
 
         return
@@ -74,13 +131,7 @@ return {gameBoard, displayController}
 })();
 
 /*
-player functions allow them to mark a specific spot on the board
-        tie function to DOM, let players click to place their marker
-        only one player per spot
-
-    logic checks for gameover, 3 in a row and tie 
-
-    player name inputs
+     player name inputs
     start/restart button
     congratulations screen to winner
 */
