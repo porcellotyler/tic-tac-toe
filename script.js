@@ -133,5 +133,4 @@ return {gameBoard, displayController}
 /*
      player name inputs
     start/restart button
-    congratulations screen to winner
 */
