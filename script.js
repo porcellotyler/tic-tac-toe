@@ -25,13 +25,15 @@ const gameFlow = (() => {
         return {board, boardDivs};
     })();
 
-    //var turnCounter = 1; //find way to set turns w/o resetting
-
     const displayController = (() => {
         for (let i = 1; i < 10; i++) {
             let tile = document.getElementById(`tile-${i}`);
             tile.addEventListener("click", function() {
-                checkWho(tile, turnCounter, i)
+                if (tile.innerText == 'X' || tile.innerText == 'O') {
+                    //do nothing if tile has an X or O already
+                } else {
+                    checkWho(tile, turnCounter, i)
+                };
         })};
 
         function checkWho(tile, turnCounter, tileNum) {
