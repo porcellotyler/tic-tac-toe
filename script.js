@@ -1,3 +1,10 @@
+var turnCounter = 1;
+
+function increaseTurnCounter() {
+    turnCounter = turnCounter + 1;
+    return turnCounter
+};
+
 const gameFlow = (() => {
    
    var gameBoard = (() => {
@@ -18,12 +25,26 @@ const gameFlow = (() => {
         return {board, boardDivs};
     })();
 
+    //var turnCounter = 1; //find way to set turns w/o resetting
+
     const displayController = (() => {
-        for (let i = 1; i < 9; i++) {
+        for (let i = 1; i < 10; i++) {
             let tile = document.getElementById(`tile-${i}`);
             tile.addEventListener("click", function() {
-                changeTile(tile, player1.marker, i)
+                checkWho(tile, turnCounter, i)
         })};
+
+        function checkWho(tile, turnCounter, tileNum) {
+            if (turnCounter % 2 === 0) {
+                let marker = 'O'
+                increaseTurnCounter();
+                return changeTile(tile, marker, tileNum)
+            } else if (turnCounter % 2 != 0) {
+                let marker = 'X'
+                increaseTurnCounter();
+                return changeTile(tile, marker, tileNum)
+            };
+        };
 
         function changeTile(tile, marker, tileNum) {
             tile.innerText = `${marker}`;
