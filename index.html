@@ -14,6 +14,13 @@
             Welcome to Tic-Tac-Toe!
         </div>
 
+        <div class="playerOne">
+            <form>
+                <input type="text" value="Player One">
+            </form>
+            <p>X</p>
+        </div>
+
         <div id="container">
             <div id="tile-1"></div>
             <div id="tile-2"></div>
@@ -26,16 +33,17 @@
             <div id="tile-9"></div>
         </div>
 
-        <div class="userInfo">
-            <button id="start-button">Start</button>
-            <button id="reset-button">Reset</button>
+        <div id="winDisplay"></div>
 
-            <!--<p>Pick your letter:</p>
-            <button id="x-button">X</button>
-            <button id="o-button">O</button>-->
+        <div class="playerTwo">
+            <form>
+                <input type="text" value="Player Two">
+            </form>
+            <p>O</p>
         </div>
 
-        <div id="winDisplay">
+        <div class="buttonArea">
+            <button id="reset-button">Reset</button>
         </div>
     </div>
     <script src="script.js"></script>

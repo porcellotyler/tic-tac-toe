@@ -137,7 +137,7 @@ const gameFlow = (() => {
         return
     })();
 
-    const startButton = document.getElementById("start-button");
+    /*const startButton = document.getElementById("start-button");
         startButton.addEventListener("click", function() { startGame() });
 
     function startGame() {
@@ -147,7 +147,7 @@ const gameFlow = (() => {
         */
 
         //append div with form asking for username
-        const infoContainer = document.createElement("div")
+       /* const infoContainer = document.createElement("div")
             infoContainer.innerText = 'Enter your username:';
 
         const form = document.createElement("form");
@@ -164,7 +164,7 @@ const gameFlow = (() => {
             infoContainer.appendChild(submit);
 
         document.body.appendChild(infoContainer);
-    };
+    }; */
 
     const playerFactory = (name, marker) => {
         return {name, marker};
