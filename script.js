@@ -106,6 +106,9 @@ const gameFlow = (() => {
                     let arrayLocation = i - 1;
                     updateArray(arrayLocation, '');
                     resetTurnCounter();
+
+                    const display = document.getElementById("winDisplay");
+                        display.innerHTML = '';
                 }
             };
         };
