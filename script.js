@@ -139,54 +139,5 @@ const gameFlow = (() => {
 
         return
     })();
-
-    /*const startButton = document.getElementById("start-button");
-        startButton.addEventListener("click", function() { startGame() });
-
-    function startGame() {
-        /* instead of a pop up input, have two inputs available for both players at all times to enter and edit their names as they would like w/o submitting anything
-        
-        can position each player on either side of the game board and have a message or color display which side's turn it currently is 
-        */
-
-        //append div with form asking for username
-       /* const infoContainer = document.createElement("div")
-            infoContainer.innerText = 'Enter your username:';
-
-        const form = document.createElement("form");
-            form.setAttribute('method','post')
-            infoContainer.appendChild(form);
-
-        const input = document.createElement("input");
-            input.setAttribute('type',"text");
-            input.setAttribute('name',"username");
-            infoContainer.appendChild(input);
-
-        const submit = document.createElement("button");
-            submit.innerText = 'Submit';
-            infoContainer.appendChild(submit);
-
-        document.body.appendChild(infoContainer);
-    }; */
-
-    const playerFactory = (name, marker) => {
-        return {name, marker};
-    };
-
-    let player1 = playerFactory('bob', 'X');
-    let player2 = playerFactory('john', 'O');
-
 return {gameBoard, displayController}
 })();
-
-/*
-    start button : make player input display
-
-    player 1 - input your name, pick your letter
-    player 2 - input your name, pick your letter
-
-    restart button, clear board and player input display
-
-    player name inputs
-    start button
-*/
