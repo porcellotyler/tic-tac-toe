@@ -5,6 +5,11 @@ function increaseTurnCounter() {
     return turnCounter
 };
 
+function resetTurnCounter() {
+    turnCounter = 1;
+    return turnCounter
+};
+
 const gameFlow = (() => {
    
    var gameBoard = (() => {
@@ -90,8 +95,20 @@ const gameFlow = (() => {
                 };
         })};
 
-        //need to add a reset button
+        const resetButton = document.getElementById("reset-button");
+            resetButton.addEventListener("click", function() { resetGame() });
 
+        function resetGame() {
+            for (let i = 1; i < 10; i++) {
+                let tile = document.getElementById(`tile-${i}`);
+                if (tile.innerText == 'X' || tile.innerText == 'O') {
+                    tile.innerText = '';
+                    let arrayLocation = i - 1;
+                    updateArray(arrayLocation, '');
+                    resetTurnCounter();
+                }
+            };
+        };
         function checkWho(tile, turnCounter, tileNum) {
             if (turnCounter % 2 === 0) {
                 let marker = 'O'
@@ -120,6 +137,35 @@ const gameFlow = (() => {
         return
     })();
 
+    const startButton = document.getElementById("start-button");
+        startButton.addEventListener("click", function() { startGame() });
+
+    function startGame() {
+        /* instead of a pop up input, have two inputs available for both players at all times to enter and edit their names as they would like w/o submitting anything
+        
+        can position each player on either side of the game board and have a message or color display which side's turn it currently is 
+        */
+
+        //append div with form asking for username
+        const infoContainer = document.createElement("div")
+            infoContainer.innerText = 'Enter your username:';
+
+        const form = document.createElement("form");
+            form.setAttribute('method','post')
+            infoContainer.appendChild(form);
+
+        const input = document.createElement("input");
+            input.setAttribute('type',"text");
+            input.setAttribute('name',"username");
+            infoContainer.appendChild(input);
+
+        const submit = document.createElement("button");
+            submit.innerText = 'Submit';
+            infoContainer.appendChild(submit);
+
+        document.body.appendChild(infoContainer);
+    };
+
     const playerFactory = (name, marker) => {
         return {name, marker};
     };
@@ -131,6 +177,13 @@ return {gameBoard, displayController}
 })();
 
 /*
-     player name inputs
-    start/restart button
+    start button : make player input display
+
+    player 1 - input your name, pick your letter
+    player 2 - input your name, pick your letter
+
+    restart button, clear board and player input display
+
+    player name inputs
+    start button
 */

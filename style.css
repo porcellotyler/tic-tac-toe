@@ -37,19 +37,19 @@
 }
 
 #tile-1 {
-    border-radius: 5px 0px 0px 0px;
+    border-radius: 15px 0px 0px 0px;
 }
 
 #tile-3 {
-    border-radius: 0px 5px 0px 0px;
+    border-radius: 0px 15px 0px 0px;
 }
 
 #tile-7 {
-    border-radius: 0px 0px 0px 5px;
+    border-radius: 0px 0px 0px 15px;
 }
 
 #tile-9 {
-    border-radius: 0px 0px 5px 0px;
+    border-radius: 0px 0px 15px 0px;
 }
 
 #winDisplay {
